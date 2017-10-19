@@ -15,8 +15,8 @@ class Course(models.Model):
     SCHOOL_CHOICE = (('SEIEE', 'School of Electronic Information and Electrical Engineering'),
                      # to be continued
                      )
-    Course_student = models.CharField(max_length=10, choices=SCHOOL_CHOICE, default='SEIEE')
-    Course_introduction = models.CharField(max_length=1000, default="The lazy gay leave nothing there.")
+    Course_school = models.CharField(max_length=10, choices=SCHOOL_CHOICE, default='SEIEE')
+    Course_introduction = models.CharField(max_length=1000, default="The lazy guy leave nothing there.")
 
     def __str__(self):
         return self.Course_name
