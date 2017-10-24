@@ -17,5 +17,6 @@ from django.conf.urls import url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^class/', include('class_management.urls',namespace = "class_management")),
     url(r'^admin/', admin.site.urls),
 ]
