@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-# by lvjun
-
 from __future__ import unicode_literals
+
 from django.db import models
 
+# Create your models here.
 
 class Course(models.Model):
     Course_name = models.CharField(max_length=200)
@@ -36,9 +36,3 @@ class theUser(models.Model):
     def __str__(self):
         return self.user_name
     #to be continued
-
-
-#class Homework(models.Model):
-#if needed
-
-#somemore models to be continued
