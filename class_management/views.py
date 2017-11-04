@@ -4,10 +4,6 @@ from django.shortcuts import render,render_to_response
 from django.http import HttpResponse
 from django import forms
 from models import theUser
-from django.template import RequestContext, loader
-from django.shortcuts import redirect
-
-
 
 class UserFormForRegist(forms.Form):
     username = forms.CharField(label='用户名',max_length=50)
@@ -17,11 +13,6 @@ class UserFormForRegist(forms.Form):
 class UserFormForLogin(forms.Form):
     username = forms.CharField(label='用户名',max_length=50)
     password = forms.CharField(label='密码',widget=forms.PasswordInput())
-
-class UserFormForedit(forms.Form):
-    username = forms.CharField(label='用户名',max_length=50)
-    password = forms.CharField(label='密码',widget=forms.PasswordInput())
-    email = forms.EmailField(label='邮箱')
 
 def regist(request):
     if request.method == 'POST':
@@ -56,30 +47,4 @@ def login(request):
     else:
         userform = UserFormForLogin()
     return render(request,'login.html',{'userform':userform})
-def edit_product(request):
-    if request.method == 'POST':
-        userform = UserFormForedit(request.POST)
-        if userform.is_valid():
-            username = userform.cleaned_data['username']
-            password = userform.cleaned_data['password']
-            email = userform.cleaned_data['email']
 
-            newUser = theUser(user_name=username,user_password=password,user_email=email)
-            newUser.save()
-
-            return HttpResponse('edit success!!!')
-    else:
-        userform = UserFormForedit()
-    return render(request,'edit.html',{'userform':userform})######
-'''
-zhangzongrui and xiefei add the edit_product function and class UserFormForedit
-the function is used to edit the information of users
-'''
-
-    
-    
-    
-            
-
-            
-    
