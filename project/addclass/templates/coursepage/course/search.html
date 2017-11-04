@@ -1,0 +1,9 @@
+{% for post in post_list %}
+  <div>
+    在这里显示课程的相应信息
+  </div>
+{% empty %}
+  <div class="no-post">
+    没有搜索到符合条件的课程
+  </div>
+{% endfor %}
