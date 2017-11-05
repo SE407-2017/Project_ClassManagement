@@ -2,11 +2,12 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.product_list, name='product_list'),
+    url(r'^$', views.course_list, name='course_list'),
     url(r'^(?P<category_slug>[-\w]+)/$',
-        views.product_list,
-        name='product_list_by_category'),
+        views.course_list,
+        name='course_list_by_category'),
     url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$',
-        views.product_detail,
-        name='product_detail'),
+        views.course_detail,
+        name='course_detail'),
+    url(r'^search/$', views.search, name='search'),
 ]

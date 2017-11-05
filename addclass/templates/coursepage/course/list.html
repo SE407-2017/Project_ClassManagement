@@ -1,0 +1,44 @@
+{% extends "coursepage/base.html" %}
+{% load static %}
+ 
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Course{% endif %}
+{% endblock %}
+
+
+{% block search %}
+    <form role="search" method="get" id="searchform"  action=“/search/”>
+      {% csrf_token %}
+      <input type="search" name="q" placeholder=“Search” required>
+      <button type="submit">搜索</button>
+    </form>
+{% endblock %} 
+
+
+
+{% block content %}
+    <div id="sidebar">
+        <h3>Categories</h3>
+        <ul>
+            <li {% if not category %}class="selected"{% endif %}>
+                <a href="{% url "addclass:course_list" %}">All</a>
+            </li>
+        {% for c in categories %}
+            <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div id="main" class=“course-list">
+        <h1>{% if category %}{{ category.name }}{% else %}Courses{% endif %}</h1>
+        {% for course in courses %}
+            <div class="item">
+                <a href="{{ course.get_absolute_url }}">
+                    <img src="{% if course.image %}{{ course.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                </a>
+                <a href="{{ course.get_absolute_url }}">{{ course.name }}</a><br>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

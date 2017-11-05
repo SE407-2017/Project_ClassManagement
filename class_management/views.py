@@ -47,4 +47,3 @@ def login(request):
     else:
         userform = UserFormForLogin()
     return render(request,'login.html',{'userform':userform})
-

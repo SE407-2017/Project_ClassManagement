@@ -15,7 +15,7 @@ class Category(models.Model):
         verbose_name_plural = 'categories'
 
     def get_absolute_url(self):
-        return reverse('addclass:product_list_by_category',
+        return reverse('addclass:course_list_by_category',
                        args=[self.slug])
 
 
@@ -23,7 +23,7 @@ def __str__(self):
     return self.name
 
 
-class Product(models.Model):
+class Course(models.Model):
     category = models.ForeignKey(Category,
                                  related_name='products')
     name = models.CharField(max_length=200, db_index=True)
@@ -31,7 +31,6 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/%Y/%m/%d',
                               blank=True)
     description = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -45,5 +44,5 @@ class Product(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('addclass:product_detail',
+        return reverse('addclass:course_detail',
                        args=[self.id, self.slug])

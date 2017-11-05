@@ -1,24 +1,39 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Category, Product
+# -*- coding: utf-8 -*-
 
-def product_list(request, category_slug=None):
+from django.shortcuts import render, get_object_or_404
+from .models import Category, Course
+
+
+def course_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
-    products = Product.objects.filter(available=True)
+    courses = Course.objects.filter(available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
+        courses = courses.filter(category=category)
     return render(request,
-                  'shop/product/list.html',
+                  'coursepage/course/list.html',
                   {'category': category,
                   'categories': categories,
-                  'products': products})
+                  'courses': courses})
 
-def product_detail(request, id, slug):
-    product = get_object_or_404(Product,
+def course_detail(request, id, slug):
+    course = get_object_or_404(Course,
                                 id=id,
                                 slug=slug,
                                 available=True)
     return render(request,
-                  'shop/product/detail.html',
-                  {'product': product})
+                  'coursepage/course/detail.html',
+                  {'course': Course})
+
+def search(request):
+    q = request.GET.get('q')
+    error_msg = ''
+    
+    if not q:
+        error_msg = '请输入关键词'
+        return render(request, 'course/list.html', {'error_msg': error_msg})
+
+    course_list = Course.objects.filter(title__icontains=q)
+    return render(request, 'coursepage/list.html', {'error_msg': error_msg,
+                  'course_list': course_list})
