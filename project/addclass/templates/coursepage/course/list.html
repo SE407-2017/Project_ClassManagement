@@ -1,3 +1,4 @@
+{% extends "coursepage/base.html" %}
 {% load static %}
  
 {% block title %}
@@ -6,7 +7,7 @@
 
 
 {% block search %}
-    <form role="search" method="get" id="searchform"  action="{% url "addclass:search” %}">
+    <form role="search" method="get" id="searchform"  action="{% url "addclass:course_list" %}">
       {% csrf_token %}                                       
       <input type="search" name="q" placeholder=“Search” required>
       <button type="submit">搜索</button>
@@ -32,10 +33,9 @@
         {% for course in courses %}
             <div class="item">
                 <a href="{{ course.get_absolute_url }}">
-                    ![]({% if course.image %}{{ course.image.url }}{% else %}{% endif %}{% static )
+                    <img src="{% if course.image %}{{ course.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
                 </a>
                 <a href="{{ course.get_absolute_url }}">{{ course.name }}</a><br>
-                ${{ course.price }}
             </div>
         {% endfor %}
     </div>

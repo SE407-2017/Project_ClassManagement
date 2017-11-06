@@ -3,6 +3,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Course
 
+
 def course_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -31,8 +32,8 @@ def search(request):
     
     if not q:
         error_msg = '请输入关键词'
-        return render(request, 'coursepage/course/list.html', {'error_msg': error_msg})
+        return render(request, 'course/list.html', {'error_msg': error_msg})
 
-    course_list = Course.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
-    return render(request, 'coursepage/course/search.html', {'error_msg': error_msg,
+    course_list = Course.objects.filter(title__icontains=q)
+    return render(request, 'coursepage/list.html', {'error_msg': error_msg,
                   'course_list': course_list})

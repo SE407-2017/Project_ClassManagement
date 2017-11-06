@@ -1,41 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1404.47">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px 'Courier New'; color: #323333; -webkit-text-stroke: #000000; background-color: #f5f5f5}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px 'Courier New'; color: #323333; -webkit-text-stroke: #000000}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px 'Courier New'; color: #a31516; -webkit-text-stroke: #a31516; background-color: #f5f5f5}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px 'Courier New'; color: #0433ff; -webkit-text-stroke: #0433ff; background-color: #f5f5f5}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; color: #323333; -webkit-text-stroke: 0px #000000}
-    span.s3 {font-kerning: none; color: #0433ff; -webkit-text-stroke: 0px #0433ff}
-    span.s4 {font-kerning: none; color: #ff2500; -webkit-text-stroke: 0px #ff2500}
-    span.s5 {font-kerning: none; color: #a31516; -webkit-text-stroke: 0px #a31516}
-  </style>
-</head>
-<body>
-<p class="p1"><span class="s1">{% extends "shop/base.html" %}</span></p>
-<p class="p1"><span class="s1">{% load static %}</span></p>
-<p class="p2"><span class="s1"><br>
-</span></p>
-<p class="p1"><span class="s1">{% block title %}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>{% if category %}{{ category.title }}{% else %}Course{% endif %}</span></p>
-<p class="p1"><span class="s1">{% endblock %}</span></p>
-<p class="p2"><span class="s1"><br>
-</span></p>
-<p class="p1"><span class="s1">{% block content %}</span></p>
-<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;div </span><span class="s4">class</span><span class="s3">=</span><span class="s1">“course-detail"</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>![]({% if course.image %}{{ course.image.url }}{% else %}{%endif%}{% static )</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;h1&gt;</span><span class="s1">{{ course.name }}</span><span class="s3">&lt;/h1&gt;</span></p>
-<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;h2&gt;&lt;a </span><span class="s4">href</span><span class="s3">=</span><span class="s1">"{{ course.category.get_absolute_url }}"</span><span class="s3">&gt;</span><span class="s2">{{ course.category }}</span><span class="s3">&lt;/a&gt;&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;p </span><span class="s4">class</span><span class="s3">=</span><span class="s5">"price"</span><span class="s3">&gt;</span><span class="s1">${{ course.price }}</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{{ course.description|linebreaks }}</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">{% endblock %}</span></p>
-</body>
-</html>
+{% extends "coursepage/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.title }}{% else %}Course{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="course-detail">
+        <img src="{% if course.image %}{{ course.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        <h1>{{ course.name }}</h1>
+        <h2><a href="{{ course.category.get_absolute_url }}">{{ course.category }}</a></h2>
+        {{ course.description|linebreaks }}
+    </div>
+{% endblock %}
