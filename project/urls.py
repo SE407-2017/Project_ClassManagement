@@ -19,4 +19,8 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^class/', include('class_management.urls',namespace = "class_management")),
     url(r'^admin/', admin.site.urls),
+    url(r'^addclass/', include('addclass.urls', namespace='addclass')),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
