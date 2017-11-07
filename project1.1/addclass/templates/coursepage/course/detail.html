@@ -1,0 +1,15 @@
+{% extends "coursepage/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.title }}{% else %}Course{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="course-detail">
+        <img src="{% if course.image %}{{ course.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        <h1>{{ course.name }}</h1>
+        <h2><a href="{{ course.category.get_absolute_url }}">{{ course.category }}</a></h2>
+        {{ course.description|linebreaks }}
+    </div>
+{% endblock %}
