@@ -1,12 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
-body { 
+body {
     margin:0;
     padding:0;
-    font-family:helvetica, sans-serif; 
+    font-family:helvetica, sans-serif;
 }
 
-h1, h2, h3, h4, h5 , h6 { 
+h1, h2, h3, h4, h5 , h6 {
     font-family: 'Ubuntu', sans-serif; font-weight:normal;
 }
 
@@ -44,7 +44,7 @@ a.button.light {
 table {
     width:100%;
     border-spacing:0;
-    border-collapse: collapse; 
+    border-collapse: collapse;
 }
 
 table th, table td {
@@ -66,14 +66,6 @@ thead th, tbody tr.total {
     background:#5993bb;
     color:#fff;
     font-weight:bold;
-}
-
-table.cart {
-    margin-bottom:40px;
-}
-
-table.cart img {
-    width:180px;
 }
 
 tbody td.num {
@@ -111,7 +103,7 @@ ul.errorlist {
    color:#ff0000;
    clear:both;
    font-size:13px;
-   margin:0; 
+   margin:0;
    padding:0;
 }
 
@@ -180,11 +172,11 @@ ul.errorlist {
 #main {
     float:left;
     width: 96%;
-    margin-right:-220px; 
+    margin-right:-220px;
     overflow:hidden;
 }
 
-.product-list .item {
+.course-list .item {
     width:25%;
     padding:10px 20px 10px 0;
     float:left;
@@ -192,60 +184,28 @@ ul.errorlist {
     line-height:1.2;
 }
 
-.product-list .item img {
-    width:100%;
+.course-list .item img {
+    width:20%;
     margin-bottom:8px;
 }
 
-.product-detail {
+.course-detail {
     text-align:justify;
 }
 
 
-.product-detail img {
-    width:40%;
+.course-detail img {
+    width:100%;
     float:left;
     padding:0 20px 20px 0;
 }
 
-.product-detail h1 {
+.course-detail h1 {
     margin-bottom:0;
 }
 
-.product-detail h2 {
+.course-detail h2 {
     margin-top:10px;
-}
-
-.order-form {
-    float:left;
-}
-
-.order-info {
-    float:right;
-    width:300px;
-    background:#efefef;
-    padding:10px 20px;
-    color:#333;
-    border-bottom:4px solid #5993bb;
-}
-
-.order-info h3 {
-    color:#5993bb;
-}
-
-.order-info ul li {
-    margin:0;
-    padding:0;
-    font-size:14px;
-}
-
-.order-info p {
-    font-weight:bold;
-    float:right;
-}
-
-.order-info span {
-    float:right;
 }
 
 .neg {
@@ -276,36 +236,3 @@ ul.errorlist {
     margin:0;
 }
 
-.recommendations {
-    clear:both;
-}
-
-.recommendations div {
-    float:left;
-}
-
-.recommendations img {
-    width:200px
-}
-
-.recommendations p {
-    clear:both;
-}
-
-.recommendations.cart {
-    width:60%;
-    float:left;
-    overflow:auto;
-}
-
-.recommendations.cart h3 {
-    margin-top:0;
-}
-
-.recommendations.cart .item {
-    margin-right:10px;
-}
-
-.recommendations.cart img {
-    width:120px;
-}
