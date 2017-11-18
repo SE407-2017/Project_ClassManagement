@@ -19,3 +19,6 @@ zhangzongrui and xiefei add the edit_product function
 the function is used to edit the information of users
 '''
 
+'''
+wyz add 课程信息界面所需url
+‘’‘
