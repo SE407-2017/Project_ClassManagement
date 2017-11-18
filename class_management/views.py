@@ -76,9 +76,27 @@ zhangzongrui and xiefei add the edit_product function and class UserFormForedit
 the function is used to edit the information of users
 '''
 
-    
-    
-    
+def course_list(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    courses = Course.objects.filter(available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        courses = courses.filter(category=category)
+    return render(request,
+                  'user/course/list.html',
+                  {'category': category,
+                  'categories': categories,
+                  'courses': courses})
+
+def course_detail(request, id, slug):
+    course = get_object_or_404(Course,
+                               id=id,
+                               slug=slug,
+                               available=True)
+    return render(request,
+                  'user/course/detail.html',
+                  {'course': course})
             
 
             
