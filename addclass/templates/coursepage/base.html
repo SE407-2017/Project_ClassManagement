@@ -9,7 +9,7 @@
 <body>
     <div id="header">
         <a href="/" class="logo">Classes</a>
-        <form role="search" method="get" id="searchform"  action="{% url "addclass:course_list" %}">
+        <form role="search" method="get" id="searchform"  action="{% url "addclass:search" %}">
           {% csrf_token %}                                       
           <input type="search" name="q" placeholder=“Search” required>
           <button type="submit">search</button>
