@@ -7,7 +7,7 @@
 
 
 {% block search %}
-    <form role="search" method="get" id="searchform"  action="{% url "addclass:course_list" %}">
+    <form role="search" method="get" id="searchform"  action="{% url "addclass:search" %}">
       {% csrf_token %}                                       
       <input type="search" name="q" placeholder=“Search” required>
       <button type="submit">搜索</button>
