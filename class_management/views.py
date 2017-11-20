@@ -65,14 +65,15 @@ def edit_product(request):
     if request.method == 'POST':
         userform = UserFormForedit(request.POST)
         if userform.is_valid():
-            username = theUser.user_name
+            username = userform.cleaned_data['username']
             password = userform.cleaned_data['password']
-            email=userform.cleaned_data['password']
+            email=userform.cleaned_data['email']
             newpassword = userform.cleaned_data['newpassword']
 
             user=theUser.objects.filter(user_name__exact=username,user_password__exact=password,user_email__exact=email)
             if user:
                 newUser = theUser(user_name=username, user_password=newpassword)
+                newUser.save()
                 return HttpResponse('edit success!!!')
             else:
                 return HttpResponse('password error!!!')
