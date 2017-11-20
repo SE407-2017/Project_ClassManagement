@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 from django.db import models
-from addclass.models import Course, Category
 
 # Create your models here.
-"""
+
 class Course(models.Model):
     Course_name = models.CharField(max_length=200)
     SEMESTER_CHOICES = (('7F', '2017Fall'),
@@ -21,7 +21,7 @@ class Course(models.Model):
     def __str__(self):
         return self.Course_name
     # to be continued
-"""
+
 
 class theUser(models.Model):
     user_name = models.CharField(max_length=15)

@@ -21,7 +21,12 @@ class UserFormForLogin(forms.Form):
 class UserFormForedit(forms.Form):
     username = forms.CharField(label='用户名',max_length=50)
     password = forms.CharField(label='密码',widget=forms.PasswordInput())
-    email = forms.EmailField(label='邮箱')
+    email=forms.EmailField(label='邮箱')
+    newpassword=forms.CharField(label='新密码',widget=forms.PasswordInput())
+class UserForminformation(forms.Form):
+    username=theUser.user_name
+    email=theUser.user_email
+
 
 def regist(request):
     if request.method == 'POST':
@@ -60,14 +65,17 @@ def edit_product(request):
     if request.method == 'POST':
         userform = UserFormForedit(request.POST)
         if userform.is_valid():
-            username = userform.cleaned_data['username']
+            username = theUser.user_name
             password = userform.cleaned_data['password']
-            email = userform.cleaned_data['email']
+            email=userform.cleaned_data['password']
+            newpassword = userform.cleaned_data['newpassword']
 
-            newUser = theUser(user_name=username,user_password=password,user_email=email)
-            newUser.save()
-
-            return HttpResponse('edit success!!!')
+            user=theUser.objects.filter(user_name__exact=username,user_password__exact=password,user_email__exact=email)
+            if user:
+                newUser = theUser(user_name=username, user_password=newpassword)
+                return HttpResponse('edit success!!!')
+            else:
+                return HttpResponse('password error!!!')
     else:
         userform = UserFormForedit()
     return render(request,'edit.html',{'userform':userform})######
@@ -76,27 +84,9 @@ zhangzongrui and xiefei add the edit_product function and class UserFormForedit
 the function is used to edit the information of users
 '''
 
-def course_list(request, category_slug=None):
-    category = None
-    categories = Category.objects.all()
-    courses = Course.objects.filter(available=True)
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        courses = courses.filter(category=category)
-    return render(request,
-                  'user/course/list.html',
-                  {'category': category,
-                  'categories': categories,
-                  'courses': courses})
-
-def course_detail(request, id, slug):
-    course = get_object_or_404(Course,
-                               id=id,
-                               slug=slug,
-                               available=True)
-    return render(request,
-                  'user/course/detail.html',
-                  {'course': course})
+    
+    
+    
             
 
             

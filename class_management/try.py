@@ -4,6 +4,10 @@ from django.shortcuts import render,render_to_response
 from django.http import HttpResponse
 from django import forms
 from models import theUser
+from django.template import RequestContext, loader
+from django.shortcuts import redirect
+
+
 
 class UserFormForRegist(forms.Form):
     username = forms.CharField(label='用户名',max_length=50)
@@ -54,38 +58,20 @@ def login(request):
     return render(request,'login.html',{'userform':userform})
 def edit_product(request):
     if request.method == 'POST':
-        userform = UserFormForedit(request.POST)
+        userform = UserFormForedit(request.POST)
         if userform.is_valid():
             username = userform.cleaned_data['username']
             password = userform.cleaned_data['password']
-            email=userform.cleaned_data['email']
-            
+            email = userform.cleaned_data['email']
+
             newUser = theUser(user_name=username,user_password=password,user_email=email)
             newUser.save()
-            return HttpResponse('good')
-    if request.method == "GET":
-        userform = UserFormForedit(initial={
-                'username':username,
-                'password':password,
-                'email':email,
-        }
-        return render(request,'edit.html',{'userform':userform})
-def edit_product(request):
-    aler=u"提示："
-    userform = UserFormForRegist(request.POST)
-    stulist = theUser.objects.all()
-    message=request.POST.get('message')
-    old = request.POST.get('old')
-    new=request.POST.get('new')
-    username=request.POST.get('username')
-    password=request.POST.get('password')
-    email=request.POST.get('email')
-    if old=='username':
-        student=theUser.objects.filter(name_contains=message).update(username=new)
-    elif old=='password':
-        student=theUser.objects.filter(name_contains=message).update(password=new)
-    elif old=='email':
-        student=theUser.objects.filter(name_contains=message).update(email=new)
+
+            return HttpResponse('edit success!!!')
     else:
-        aler+=u"请输入需要修改的："
-    return render_to_response("edit.html",context_instance=RequestContext(request,{"message":message,"new":new,"stulist":stulist,"aler":aler)
+        userform = UserFormForedit()
+    return render(request,'edit.html',{'userform':userform})######
+'''
+zhangzongrui and xiefei add the edit_product function and class UserFormForedit
+the function is used to edit the information of users
+'''
