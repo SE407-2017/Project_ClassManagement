@@ -75,3 +75,4 @@ def edit_product(request):
 zhangzongrui and xiefei add the edit_product function and class UserFormForedit
 the function is used to edit the information of users
 '''
+pip install Pillow
