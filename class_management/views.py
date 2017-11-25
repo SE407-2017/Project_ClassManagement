@@ -71,10 +71,3 @@ def edit_product(request):
     else:
         userform = UserFormForedit()
     return render(request,'edit.html',{'userform':userform})######
-    
-    
-    
-            
-
-            
-    
