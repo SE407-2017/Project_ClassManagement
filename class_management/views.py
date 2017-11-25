@@ -29,8 +29,7 @@ def regist(request):
 
             newUser = theUser(user_name=username,user_password=password,user_email=email)
             newUser.save()
-
-            return HttpResponse('regist success!!!')
+            return render(request,'index.html',{'userform':userform})
     else:
         userform = UserFormForRegist()
     return render(request,'regist.html',{'userform':userform})######
@@ -57,7 +56,7 @@ def login(request):
 def edit_product(request):
     currentUser = theUser.objects.get(user_name = request.session.get('currentUser_name'))
     class UserFormForedit(forms.Form):
-        email = forms.EmailField(label='邮  箱', initial=currentUser.user_email)
+        email = forms.EmailField(label='邮箱', initial=currentUser.user_email)
     if request.method == 'POST':
         userform = UserFormForedit(request.POST)
         if userform.is_valid():
@@ -65,7 +64,7 @@ def edit_product(request):
             if currentUser:
                 currentUser.user_email = email
                 currentUser.save()
-                return HttpResponse('edit success!!!')
+                return render(request,'index.html',{'userform':userform})
             else:
                 return HttpResponse('something Wrong!!!')
     else:
