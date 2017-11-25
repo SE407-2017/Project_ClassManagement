@@ -18,15 +18,6 @@ class UserFormForLogin(forms.Form):
     username = forms.CharField(label='用户名',max_length=50)
     password = forms.CharField(label='密码',widget=forms.PasswordInput())
 
-class UserFormForedit(forms.Form):
-    username = forms.CharField(label='用户名',max_length=50)
-    password = forms.CharField(label='密码',widget=forms.PasswordInput())
-    email=forms.EmailField(label='邮箱')
-    newpassword=forms.CharField(label='新密码',widget=forms.PasswordInput())
-class UserForminformation(forms.Form):
-    username=theUser.user_name
-    email=theUser.user_email
-
 
 def regist(request):
     if request.method == 'POST':
@@ -54,6 +45,7 @@ def login(request):
             user = theUser.objects.filter(user_name__exact=username,user_password__exact=password)
 
             if user:
+                request.session['currentUser_name'] = username
                 return render(request,'index.html',{'userform':userform})
             else:
                 return HttpResponse('用户名或密码错误,请重新登录')
@@ -61,30 +53,24 @@ def login(request):
     else:
         userform = UserFormForLogin()
     return render(request,'login.html',{'userform':userform})
+
 def edit_product(request):
+    currentUser = theUser.objects.get(user_name = request.session.get('currentUser_name'))
+    class UserFormForedit(forms.Form):
+        email = forms.EmailField(label='邮  箱', initial=currentUser.user_email)
     if request.method == 'POST':
         userform = UserFormForedit(request.POST)
         if userform.is_valid():
-            username = userform.cleaned_data['username']
-            password = userform.cleaned_data['password']
             email=userform.cleaned_data['email']
-            newpassword = userform.cleaned_data['newpassword']
-
-            user=theUser.objects.filter(user_name__exact=username,user_password__exact=password,user_email__exact=email)
-            if user:
-                newUser = theUser(user_name=username, user_password=newpassword)
-                newUser.save()
+            if currentUser:
+                currentUser.user_email = email
+                currentUser.save()
                 return HttpResponse('edit success!!!')
             else:
-                return HttpResponse('password error!!!')
+                return HttpResponse('something Wrong!!!')
     else:
         userform = UserFormForedit()
     return render(request,'edit.html',{'userform':userform})######
-'''
-zhangzongrui and xiefei add the edit_product function and class UserFormForedit
-the function is used to edit the information of users
-'''
-
     
     
     
