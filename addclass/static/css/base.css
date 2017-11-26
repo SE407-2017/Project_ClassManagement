@@ -129,10 +129,6 @@ ul.errorlist {
     margin-right:10%;
 }
 
-#subheader .cart {
-    float:right;
-    padding-top:4px;
-}
 
 #content {
     padding:0 100px;
@@ -176,7 +172,7 @@ ul.errorlist {
     overflow:hidden;
 }
 
-.course-list .item {
+.item {
     width:25%;
     padding:10px 20px 10px 0;
     float:left;
@@ -184,8 +180,9 @@ ul.errorlist {
     line-height:1.2;
 }
 
-.course-list .item img {
-    width:20%;
+.item img {
+    width:300px;
+    height:280px;
     margin-bottom:8px;
 }
 
@@ -195,8 +192,8 @@ ul.errorlist {
 
 
 .course-detail img {
-    width:100%;
-    float:left;
+    width:450px;
+    height:420px;
     padding:0 20px 20px 0;
 }
 
@@ -204,35 +201,18 @@ ul.errorlist {
     margin-bottom:0;
 }
 
-.course-detail h2 {
+.course-detail input {
     margin-top:10px;
+}
+
+.course-detail h3 {
+    margin-top:10px;
+    font-size: 1.27em;
 }
 
 .neg {
     color:#dc1616;
 }
 
-.languages {
-   float:right;
-   padding-top:4px;
-   font-size:14px;
-}
 
-.languages ul {
-    list-style:none;
-    margin:0;
-    padding:0;
-    float:left;
-}
-
-.languages ul li {
-    float:left;
-    margin:0 0 0 10px;
-    font-size:14px;
-}
-
-.languages p {
-    float:left;
-    margin:0;
-}
 
