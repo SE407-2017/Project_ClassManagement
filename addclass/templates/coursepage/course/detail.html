@@ -1,1 +1,16 @@
-{% extends "coursepage/base.html" %}{% load static %}{% block title %}    {% if category %}{{ category.title }}{% else %}Course{% endif %}{% endblock %}{% block content %}    <div class="course-detail">        <img src="{% if course.image %}{{ course.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">        <h1>{{ course.name }}</h1>        {{ course.description|linebreaks }}        <h2><a href="{{ course.category.get_absolute_url }}">{{ "Back" }}</a></h2>    </div>{% endblock %}
+{% extends "coursepage/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.title }}{% else %}Course{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="course-detail">
+        <img src="{% if course.image %}{{ course.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        <h1>{{ course.name }}</h1>
+        {{ course.description|linebreaks }}
+        <a href="{{ course.category.get_absolute_url }}"><input  type = submit value="Choose this class"></a>
+        <h3><a href="{{ course.category.get_absolute_url }}">{{ "Back" }}</a></h3>
+    </div>
+{% endblock %}
