@@ -4,6 +4,7 @@ body {
     margin:0;
     padding:0;
     font-family:helvetica, sans-serif;
+	background-color:#b0c4de;
 }
 
 h1, h2, h3, h4, h5 , h6 {
@@ -236,3 +237,27 @@ ul.errorlist {
     margin:0;
 }
 
+.index1{
+    font-family: 'Ubuntu', sans-serif; 
+	font-weight:normal;
+	text-align:center;
+	font-size:70px;
+}
+
+.index2{
+	font-family: 'Ubuntu', sans-serif;
+    text-align:center;
+	font-size:60px;
+}
+
+.index3{
+	font-family: 'Ubuntu', sans-serif;
+    text-align:center;
+	font-size:30px
+}
+
+a.index{color:#FFFF00;text-decoration:none;}
+
+a.index:hover {color:#FF00FF;text-decoration:underline;}
+
+a.index:active {color:#00FF00;text-decoration:underline;}
