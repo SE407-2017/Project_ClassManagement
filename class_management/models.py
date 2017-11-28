@@ -1,27 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
+from addclass.models import Course, Category
 
 # Create your models here.
-
-class Course(models.Model):
-    Course_name = models.CharField(max_length=200)
-    SEMESTER_CHOICES = (('7F', '2017Fall'),
-                        ('7U', '2017Summer'),
-                        ('8S', '2018Spring')
-                        )
-    Course_semester = models.CharField(max_length=2, choices=SEMESTER_CHOICES, default='7F')
-    SCHOOL_CHOICE = (('SEIEE', 'School of Electronic Information and Electrical Engineering'),
-                     # to be continued
-                     )
-    Course_school = models.CharField(max_length=10, choices=SCHOOL_CHOICE, default='SEIEE')
-    Course_introduction = models.CharField(max_length=1000, default="The lazy guy leave nothing there.")
-
-    def __str__(self):
-        return self.Course_name
-    # to be continued
-
 
 class theUser(models.Model):
     user_name = models.CharField(max_length=15)
@@ -31,8 +13,11 @@ class theUser(models.Model):
                     )
     user_type = models.CharField(max_length=1, choices=USER_CHOICES, default='S')
     user_email = models.EmailField()
-    user_course = models.ManyToManyField(Course)
-
+    user_course = models.ManyToManyField(Course,blank=True)
+    
     def __str__(self):
         return self.user_name
-    #to be continued
+
+    def user_course_list(self):
+            return ','.join([i.name for i in self.user_course.all()])
+#to be continued
