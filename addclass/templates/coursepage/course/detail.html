@@ -10,7 +10,7 @@
         <img src="{% if course.image %}{{ course.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
         <h1>{{ course.name }}</h1>
         {{ course.description|linebreaks }}
-        <a href="{{ course.category.get_absolute_url }}"><input  type = submit value="Choose this class"></a>
-        <h3><a href="{{ course.category.get_absolute_url }}">{{ "Back" }}</a></h3>
+        <a href=" "><input type = submit value="Choose this class" onclick="{% url "addclass:choose" %}"></a >
+        <h2><a href="{{ course.category.get_absolute_url }}">{{ "Back" }}</a></h2>
     </div>
 {% endblock %}
