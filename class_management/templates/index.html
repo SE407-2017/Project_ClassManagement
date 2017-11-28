@@ -7,17 +7,15 @@
     <title>index</title>
     <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
+<style>
+        html,body{text-align:center;margin:0px auto;}
+</style>
 <body>
-<h1 class="index1">Welcome to Our Class!</h1>
+<h1>Welcome to Here!<h1>
+<a href="http://127.0.0.1:8000/class/edit_product/">个人信息</a>
 <br>
-<h2 class="index2">
-<a class="index" href="{% url 'edit_product' %}">个人信息</a>
+<a href="{% url "class_management:course_list" %}"> 我的课程</a>
 <br>
-<br>
-<a class="index" href="http://127.0.0.1:8000/addclass/"> 我的课程</a>
-<br>
-<br>
-<a class="index" href="https://www.baidu.com/"> 课程大厅</a>
-</h2>
+<a href="http://127.0.0.1:8000/addclass/"> 课程大厅</a>
 </body>
 </html>
