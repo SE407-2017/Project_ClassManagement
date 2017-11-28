@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     url(r'^login/$',views.login),
     url(r'^regist/$',views.regist),
-    url(r'^edit_product/$',views.edit_product,name='edit_product'),
+    url(r'^edit_product/$',views.edit_product),
     url(r'^$', views.course_list, name='course_list'),
     url(r'^(?P<category_slug>[-\w]+)/$',
         views.course_list,
@@ -14,5 +14,4 @@ urlpatterns = [
         views.course_detail,
         name='course_detail'),
     ]
-    
 
