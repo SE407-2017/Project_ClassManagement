@@ -8,7 +8,3 @@ from addclass.models import Course, Category
 class theUserAdmin(admin.ModelAdmin):
     list_display = ['id','user_name','user_email','user_course_list']
 admin.site.register(theUser,theUserAdmin)
-
-class CourseAdmin(admin.ModelAdmin):
-    list_display = ['id','name']
-admin.site.register(Course,CourseAdmin)
