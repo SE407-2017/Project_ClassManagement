@@ -6,6 +6,7 @@ from django import forms
 from models import theUser
 from django.template import RequestContext, loader
 from django.shortcuts import redirect
+from addclass.models import Category, Course
 
 
 class UserFormForRegist(forms.Form):
@@ -38,9 +39,9 @@ def login(request):
         if userform.is_valid():
             username = userform.cleaned_data['username']
             password = userform.cleaned_data['password']
-
+            
             user = theUser.objects.filter(user_name__exact=username,user_password__exact=password)
-
+            
             if user:
                 request.session['User'] = username
                 return render(request,'index.html',{'userform':userform})
@@ -67,3 +68,19 @@ def edit_product(request):
     else:
         userform = UserFormForedit()
     return render(request,'edit.html',{'userform':userform})######
+
+def course_list(request):
+    User = theUser.objects.get(user_name = request.session.get('User'))
+    courses = User.user_course.all()
+    return render(request,
+                  'user/course/list.html',
+                  {'courses': courses})
+
+def course_detail(request, id, slug):
+    course = get_object_or_404(Course,
+                               id=id,
+                               slug=slug,
+                               available=True)
+    return render(request,
+                  'user/course/detail.html',
+                  {'course': course})
