@@ -1,9 +1,17 @@
-{% for post in post_list %}
-  <div>
-    在这里显示课程的相应信息
+{% block main %}
+{% if error_msg %}
+    <p>{{ error_msg }}</p>
+{% endif %}
+
+{% for course in course_list %}
+  <div class="item">
+      <a href="{{ course.get_absolute_url }}">
+      </a>
+      <a href="{{ course.get_absolute_url }}">{{ course.name }}</a><br>
   </div>
 {% empty %}
   <div class="no-post">
     没有搜索到符合条件的课程
   </div>
 {% endfor %}
+{% endblock main %}
