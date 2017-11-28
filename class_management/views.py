@@ -64,7 +64,7 @@ def edit_product(request):
                 User.user_email = email
                 User.save()
             else:
-                return HttpResponse('请先登录!!!')
+                return HttpResponse('请先登录!!!!!!')
     else:
         userform = UserFormForedit()
     return render(request,'edit.html',{'userform':userform})######
