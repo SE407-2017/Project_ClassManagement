@@ -34,10 +34,10 @@ def search(request):
     
     if not q:
         error_msg = '请输入关键词'
-        return render(request, 'course/list.html', {'error_msg': error_msg})
+        return render(request, 'coursepage/course/list.html', {'error_msg': error_msg})
 
-    course_list = Course.objects.filter(title__icontains=q)
-    return render(request, 'coursepage/list.html', {'error_msg': error_msg,
+    course_list = Course.objects.filter(name__icontains=q)
+    return render(request, 'coursepage/course/search.html', {'error_msg': error_msg,
                   'course_list': course_list})
 
 def choose(request):
@@ -48,3 +48,4 @@ def choose(request):
     return render(request,
                   'coursepage/course/detail.html',
                   {'course': thisCourse})
+
