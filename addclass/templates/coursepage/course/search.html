@@ -1,4 +1,7 @@
-{% block main %}
+{% extends "coursepage/base.html" %}
+{% load static %}
+
+{% block content %}
 {% if error_msg %}
     <p>{{ error_msg }}</p>
 {% endif %}
@@ -6,6 +9,7 @@
 {% for course in course_list %}
   <div class="item">
       <a href="{{ course.get_absolute_url }}">
+          <img src="{% if course.image %}{{ course.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
       </a>
       <a href="{{ course.get_absolute_url }}">{{ course.name }}</a><br>
   </div>
@@ -14,4 +18,4 @@
     没有搜索到符合条件的课程
   </div>
 {% endfor %}
-{% endblock main %}
+{% endblock content %}
