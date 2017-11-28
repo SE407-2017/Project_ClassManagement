@@ -2,7 +2,13 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Course,theUser
+from .models import theUser
+from addclass.models import Course, Category
 
-admin.site.register(Course)
-admin.site.register(theUser)
+class theUserAdmin(admin.ModelAdmin):
+    list_display = ['id','user_name','user_email','user_course_list']
+admin.site.register(theUser,theUserAdmin)
+
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ['id','name']
+admin.site.register(Course,CourseAdmin)
