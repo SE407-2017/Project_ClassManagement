@@ -6,7 +6,7 @@ body {
     font-family:helvetica, sans-serif;
 }
 
-h1, h2, h3, h4, h5 , h6 {
+h1, h2, h3 {
     font-family: 'Ubuntu', sans-serif; font-weight:normal;
 }
 
@@ -47,20 +47,6 @@ table {
     border-collapse: collapse;
 }
 
-table th, table td {
-    text-align:left;
-    font-size:14px;
-    padding:10px;
-    margin:0;
-}
-
-tbody tr:nth-child(odd) {
-    background:#efefef;
-}
-
-tbody tr.subtotal {
-    background:#ccc;
-}
 
 thead th, tbody tr.total {
     background:#5993bb;
@@ -97,16 +83,6 @@ form p input {
     color:#666;
     border-radius:4px;
 }
-
-ul.errorlist {
-   float:left;
-   color:#ff0000;
-   clear:both;
-   font-size:13px;
-   margin:0;
-   padding:0;
-}
-
 
 #header {
     padding:10px 100px;
@@ -209,10 +185,4 @@ ul.errorlist {
     margin-top:10px;
     font-size: 1.27em;
 }
-
-.neg {
-    color:#dc1616;
-}
-
-
 
