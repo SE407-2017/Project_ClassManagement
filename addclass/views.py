@@ -41,7 +41,6 @@ def search(request):
                   'course_list': course_list})
 
 def choose(request):
-def choose(request):
     thisCourse = Course.objects.get(id = request.session.get('course'))
     User = theUser.objects.get(user_name = request.session.get('User'))
     if User.course_list not in User.course_list:
