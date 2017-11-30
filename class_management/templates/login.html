@@ -1,13 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 {% load static %}
 <html lang="zh-CN"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Login</title>
   </head>
-<style>
-        html,body{text-align:center;margin:0px auto;}
-</style>
 <body>
 <h1>登录页面</h1>
 <form method = 'post' enctype="multipart/form-data">{% csrf_token %}
@@ -16,3 +12,16 @@
 </form>
 </body>
 </html>
+
+<style>
+    html,body{text-align:center;margin:150px auto;}
+    h1 {color:#5993bb;}
+    input{
+    color:#fff;
+    background:#5993bb;
+    border-radius:4px;
+    padding:10px 20px;
+    font-size:14px;
+    border:0;
+    }
+</style>
