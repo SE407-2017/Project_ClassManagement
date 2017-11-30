@@ -20,8 +20,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'class/^$', include('class_management.urls',namespace = "class_management")),
-    url(r'^admin/$', admin.site.urls),
     url(r'^addclass/$', include('addclass.urls', namespace='addclass')),
+    url(r'^admin/$', admin.site.urls),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
