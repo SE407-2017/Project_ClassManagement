@@ -24,9 +24,13 @@ def course_detail(request, id, slug):
                                 slug=slug,
                                 available=True)
     request.session['course'] = course.id
+    User = theUser.objects.get(user_name = request.session.get('User'))
+    usercource = User.user_course.all()
     return render(request,
                   'coursepage/course/detail.html',
-                  {'course': course})
+                  {'course': course,
+                  'usercource': usercource
+                  })
 
 def search(request):
     q = request.GET.get('q')
@@ -43,10 +47,13 @@ def search(request):
 def choose(request):
     thisCourse = Course.objects.get(id = request.session.get('course'))
     User = theUser.objects.get(user_name = request.session.get('User'))
+    usercource = User.user_course.all()
     User.user_course.add(thisCourse)
     User.save()
     return render(request,
                   'coursepage/course/detail.html',
-                  {'course': thisCourse})
+                  {'course': thisCourse,
+                  'usercource': usercource
+                  })
 
 
