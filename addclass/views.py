@@ -41,11 +41,17 @@ def search(request):
                   'course_list': course_list})
 
 def choose(request):
+def choose(request):
     thisCourse = Course.objects.get(id = request.session.get('course'))
     User = theUser.objects.get(user_name = request.session.get('User'))
-    User.course_list.add(thisCourse)
-    User.save()
+    if User.course_list not in User.course_list:
+        User.course_list.add(thisCourse)
+        User.save()
+        alert('课程添加成功！')
+    else:
+        alert('你已添加该课程！')
     return render(request,
                   'coursepage/course/detail.html',
                   {'course': thisCourse})
+
 
