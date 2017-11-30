@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^$', include('class_management.urls',namespace = "class_management")),
+    url(r'class/^$', include('class_management.urls',namespace = "class_management")),
     url(r'^admin/$', admin.site.urls),
     url(r'^addclass/$', include('addclass.urls', namespace='addclass')),
 ]
