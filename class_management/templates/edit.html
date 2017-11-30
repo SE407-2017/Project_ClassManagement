@@ -1,19 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 {% load static %}
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>edit</title>
-    <link href="{% static "css/base.css" %}" rel="stylesheet">
-</head>
-<body>
-<h1 class="index1">个人信息修改</h1>
-<h3 class="index3">
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+        html,body{text-align:center;margin:0px auto;}
+	a｛margin:100px｝
+</style>
+<h1>个人信息</h1>
 <form method = 'post' enctype="multipart/form-data">{% csrf_token %}
 {{userform.as_p}}
 <input type="submit" value = "修改" />
 </form>
-<a href="http://127.0.0.1:8000/class/index/">Back</a>
-</h3>
-</body>
+<a href="http://127.0.0.1:8000/class/index/">BACK</a>
