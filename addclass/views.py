@@ -43,8 +43,8 @@ def search(request):
 def choose(request):
     thisCourse = Course.objects.get(id = request.session.get('course'))
     User = theUser.objects.get(user_name = request.session.get('User'))
-    if User.course_list not in User.course_list:
-        User.course_list.add(thisCourse)
+    if thisCourse not in User.user_cource:
+        User.user_cource.add(thisCourse)
         User.save()
         alert('课程添加成功！')
     else:
