@@ -143,3 +143,11 @@ a.button.light {
     font-size: 1.27em;
 }
 
+.course-detail button{
+    color:#fff;
+    background:#5993bb;
+    border-radius:4px;
+    padding:10px 20px;
+    font-size:14px;
+    border:0;
+}
