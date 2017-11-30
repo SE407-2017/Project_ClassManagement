@@ -11,8 +11,8 @@
         <h1>{{ course.name }}</h1>
         {{ course.description|linebreaks }}
         <form role="search" method="get" id="searchform"  action="{% url "addclass:choose" %}">
-          {% csrf_token %}                                       
-          <button type="submit">Choose this class</button>
+          {% csrf_token %}
+          <button type="submit" onclick="alert('加入课程成功！')" >Choose this class</button>
         </form>
         <h2><a href="{{ course.category.get_absolute_url }}">{{ "Back" }}</a></h2>
     </div>
