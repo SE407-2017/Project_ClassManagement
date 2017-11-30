@@ -18,7 +18,9 @@ class UserFormForLogin(forms.Form):
     username = forms.CharField(label='用户名',max_length=50)
     password = forms.CharField(label='密  码',widget=forms.PasswordInput())
 
-
+def index(request):
+    return render(request,'index.html')
+    
 def regist(request):
     if request.method == 'POST':
         userform = UserFormForRegist(request.POST)
