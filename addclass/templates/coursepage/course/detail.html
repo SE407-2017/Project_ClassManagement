@@ -12,7 +12,7 @@
         {{ course.description|linebreaks }}
         <form role="search" method="get" id="searchform"  action="{% url "addclass:choose" %}">
           {% csrf_token %}
-          <button type="submit" onclick="alert('加入课程成功！')" >Choose this class</button>
+          <button type="submit" onclick="{% if course in usercourse %}{alert('加入课程成功！')}{% else %}{alert('您已选过该课程！')}{% endif %}" >Choose this class</button>
         </form>
         <h2><a href="{{ course.category.get_absolute_url }}">{{ "Back" }}</a></h2>
     </div>
